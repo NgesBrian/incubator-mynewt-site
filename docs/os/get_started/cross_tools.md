@@ -1,7 +1,8 @@
 # Installing Cross Tools for ARM 
 
-This page shows how to install tools to use some ARM based platforms with
-Apache Mynewt.
+This page shows how to install tools on your laptop/computer to use for direct communication (e.g. for debugging) with some ARM based HW platforms running Apache Mynewt. You will also have to use the Newt tool installed to run natively on your machine. You may choose to do this instead of using the build toolchain and Newt tool available in a Docker container.
+
+This page provides guidance for installing the tools directly on your MAC and Linux machine. See the relevant sections below.
 
 <br>
 
@@ -41,14 +42,12 @@ computer to interface with the JTAG debug connector on a variety of boards.  A
 JTAG connection lets you debug and test embedded target devices. For more on
 OpenOCD go to [http://openocd.org](http://openocd.org).
 
-Currently, only OpenOCD 0.8.0 is supported.
-
 ```no-highlight
 $ brew install open-ocd
 $ which openocd
 /usr/local/bin/openocd
 $ ls -l $(which openocd)
-lrwxr-xr-x  1 <user>  admin  36 Sep 17 16:22 /usr/local/bin/openocd -> ../Cellar/open-ocd/0.8.0/bin/openocd
+lrwxr-xr-x  1 <user>  admin  36 Sep 17 16:22 /usr/local/bin/openocd -> ../Cellar/open-ocd/0.9.0/bin/openocd
 ```
 
 <br>

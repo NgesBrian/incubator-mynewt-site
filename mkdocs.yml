@@ -14,6 +14,7 @@ pages:
     - Introduction: 'os/get_started/introduction.md'
     - Quick Start:
         - toc: 'os/get_started/get_started.md'
+        - 'All-in-one Docker Container': 'os/get_started/docker.md'
         - 'Install Native Tools': 'os/get_started/native_tools.md'
         - 'Create Your First Project': 'os/get_started/project_create.md'
         - 'Install Cross Tools for ARM': 'os/get_started/cross_tools.md'
@@ -25,15 +26,22 @@ pages:
         - 'Blinky on Olimex': 'os/tutorials/olimex.md'
         - 'Blinky on STM32F303': 'os/tutorials/STM32F303.md'
         - 'Blinky on nRF52': 'os/tutorials/nRF52.md'
+        - 'Run Blinky from SRAM, no bootloader': 'os/tutorials/blinky_sram_olimex.md'
         - 'Add repo to project': 'os/tutorials/add_repos.md'
         - 'Create a repo': 'os/tutorials/create_repo.md'
         - 'Upgrade a repo': 'os/tutorials/upgrade_repo.md'
-        - 'BLE commands via console': 'os/tutorials/bletiny_project.md'
+        - 'Use BLE app to check stats via console': 'os/tutorials/bletiny_project.md'
         - 'Enable remote comms on sim device': 'os/tutorials/project-slinky.md'
         - 'Enable remote comms on STM32 board': 'os/tutorials/project-target-slinky.md'
         - 'Write a Test Suite for a Package': 'os/tutorials/unit_test.md'
         - 'Air-quality Sensor project': 'os/tutorials/air_quality_sensor.md'
         - 'Add task to manage multiple events': 'os/tutorials/event_queue.md'
+        - 'BLE peripheral project':
+            - toc: 'os/tutorials/bleprph/bleprph-intro.md'
+            - 'Service Registration': 'os/tutorials/bleprph/bleprph-svc-reg.md'
+            - 'Characteristic Access': 'os/tutorials/bleprph/bleprph-chr-access.md'
+            - 'Advertising': 'os/tutorials/bleprph/bleprph-adv.md'
+            - 'Connection Callbacks': 'os/tutorials/bleprph/bleprph-conn.md'
     - OS User Guide:
         - toc: 'os/os_user_guide.md'
         - OS Core:
@@ -247,18 +255,24 @@ pages:
             - 'Other File Systems': 'os/modules/fs/otherfs.md'
         - Hardware Abstraction Layer:
             - toc: 'os/modules/hal/hal.md'
+            - Architecture: 'os/modules/hal/hal_architecture.md'
             - 'API':
                 - 'Summary': 'os/modules/hal/hal_api.md'
-                - 'GPIO': 'os/modules/hal/hal_gpio/hal_gpio.md'
+                - 'ADC': 'os/modules/hal/hal_adc/hal_adc.md'
+                - 'CPU timer': 'os/modules/hal/hal_cputime/hal_cpu_timer.md'
+                - 'DAC': 'os/modules/hal/hal_dac/hal_dac.md'
                 - 'Flash memory':
                     - 'Overview': 'os/modules/hal/hal_flash/hal_flash.md'
                     - 'flash_int': 'os/modules/hal/hal_flash/hal_flash_int.md'
                     - 'flash_map': 'os/modules/hal/hal_flash/hal_flash_map.md'
-                - 'CPU timer': 'os/modules/hal/hal_cputime/hal_cpu_timer.md'
-                - 'UART': 'os/modules/hal/hal_uart/hal_uart.md'
+                - 'GPIO': 'os/modules/hal/hal_gpio/hal_gpio.md'
+                - 'I2C': 'os/modules/hal/hal_i2c/hal_i2c.md'
+                - 'PWM': 'os/modules/hal/hal_pwm/hal_pwm.md'
+                - 'SPI': 'os/modules/hal/hal_spi/hal_spi.md'
                 - 'System': 'os/modules/hal/hal_system/hal_sys.md'
-            - 'Using': 'os/modules/hal/hal_in_libraries.md'
-            - 'Creating': 'os/modules/hal/hal_creation.md'
+                - 'UART': 'os/modules/hal/hal_uart/hal_uart.md'
+            - 'Using HAL': 'os/modules/hal/hal_in_libraries.md'
+            - 'Creating HAL': 'os/modules/hal/hal_creation.md'
 
         - Test Utilities:
             - toc: 'os/modules/testutil/testutil.md'
@@ -300,6 +314,7 @@ pages:
             - toc: 'os/modules/logs/logs.md'                
     - BLE User Guide:
         - NimBLE Introduction: 'network/ble/ble_intro.md'
+        - NimBLE Security: 'network/ble/ble_sec.md'
         - Set up application: 'network/ble/nimble_setup.md'
         - Initialize stack:
             - toc: 'network/ble/ini_stack/ble_ini_intro.md'
@@ -309,6 +324,7 @@ pages:
             - 'Initialize stats pkg': 'network/ble/ini_stack/ble_statpkg.md'
             - 'Initialize console pkg': 'network/ble/ini_stack/ble_consolepkg.md'
             - 'Initialize controller': 'network/ble/ini_stack/ble_controller_ini.md'
+            - 'Initialize parent task': 'network/ble/ini_stack/ble_parent_ini.md'
             - 'Initialize host': 'network/ble/ini_stack/ble_host_ini.md'
         - API for bletiny app: 
             - toc: 'network/ble/bletiny_api.md'

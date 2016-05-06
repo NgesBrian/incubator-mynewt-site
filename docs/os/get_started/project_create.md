@@ -6,8 +6,9 @@ This page shows how to create a Mynewt Project using the `newt` command-line too
 
 ### Pre-Requisites
 
-* Ensure you have installed [newt](../../newt/install/newt_mac.md) and that the 
-newt command is in your system path. 
+* Newt:
+    * If you have taken the Docker route, you have already installed Newt.
+    * If you have taken the native install route, you have to ensure that you have installed the Newt tool following the instructions for [Mac](../../newt/install/newt_mac.md) or [Linux](../../newt/install/newt_linux.md) as appropriate, and that the `newt` command is in your system path. 
 * You must have Internet connectivity to fetch remote Mynewt components.
 * You must [install the compiler tools](native_tools.md) to 
 support native compiling to build the project this tutorial creates.  
@@ -136,17 +137,16 @@ into your local directory.
 
 ### Test the project's packages
 
-You have already built your first basic project. You can ask Newt to execute the unit tests in a package. For example, to test the shell package in the `apache-mynewt-core` repo, call newt as shown below.
+You have already built your first basic project. You can ask Newt to execute the unit tests in a package. For example, to test the `libs/os` package in the `apache-mynewt-core` repo, call newt as shown below.
 
 ```
-$ newt test @apache-mynewt-core/libs/shell
-Testing package @apache-mynewt-core/libs/shell
-Compiling os.c
-Compiling os_callout.c
-Compiling os_eventq.c
-Compiling os_heap.c
-Compiling os_mbuf.c
-Compiling os_mempool.c
+$ newt test @apache-mynewt-core/libs/os
+Testing package @apache-mynewt-core/libs/os
+Compiling hal_bsp.c
+Compiling os_bsp.c
+Compiling sbrk.c
+Archiving native.a
+Compiling flash_map.c
 <snip>
 ```
 

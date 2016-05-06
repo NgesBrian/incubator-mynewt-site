@@ -1,4 +1,6 @@
-## Running Mynewt on Arduino Zero
+## Blinky, your "Hello World!", on Arduino Zero
+
+Learn how to use packages from a default application repository of Mynewt to build your first *Hello World* application (Blinky) on a target board. Once built using the *newt* tool, this application will blink the LED lights on the target board.
 
 This tutorial describes how to run Mynewt OS on Arduino Zero. Follow these simple steps and your board will be blinking in no time!
 
@@ -11,17 +13,19 @@ Before tackling this tutorial, it's best to read about Mynewt in the [Introducti
 You will need the following equipment
 
 * An Arduino Zero board.  NOTE: There are many flavors of Arduino. Ensure that 
-you have an Arduino Zero. See below for the verions of Arduino Zero that are
+you have an Arduino Zero. See below for the versions of Arduino Zero that are
 compatible with this tutorial
 * A computer that can connect to the Arduino Zero over USB
 * A USB cable (Type A to micro B) that can connect the computer to the Arduino
 * The Mynewt Release
 
-This tutorial has been tested on the following two Arduino Zero boards - Zero and Zero-Pro.
+This tutorial has been tested on the following three Arduino Zero boards - Zero, M0 Pro, and Zero-Pro.
 
-<img src="https://www.arduino.cc/en/uploads/Main/Zero_Usb_Ports.jpg" alt="Drawing" style="width: 400px;"/>
-<img src="http://www.arduino.org//images/products/ArduinoZeroPro-flat-org.jpg" alt="Drawing" style="width: 330px;"/>
+<img src="https://www.arduino.cc/en/uploads/Main/Zero_Usb_Ports.jpg" alt="Drawing" style="width: 390px;"/>
+<img src="http://www.arduino.org/images/products/Arduino-M0Pro-flat.jpg" alt="Drawing" style="width: 310px;"/>
+<img src="http://www.arduino.org//images/products/ArduinoZeroPro-flat-org.jpg" alt="Drawing" style="width: 310px;"/>
 
+Mynewt has not been tested on Arduino M0 which has no internal debugger support.
 
 ### Install Mynewt and Newt
 
@@ -79,6 +83,10 @@ $
 
 <br>
 
+**NOTE:** If there has been a new release of a repo used in your project since you last installed it, the `0-latest` version for the repo in the `project.yml` file will refer to the new release and will not match the installed files. In that case you will get an error message saying so and you will need to run `newt upgrade` to overwrite the existing files with the latest codebase.
+
+<br>
+
 ### Create your bootloader target
 
 Next, you need to tell Newt what to build.  For the Arduino Zero, we are going to 
@@ -95,7 +103,7 @@ $ newt target set arduino_boot build_profile=optimized
 
 <br>
 
-If you have an Arduino Zero Pro, you have to set the following next:
+If you have an Arduino Zero Pro or M0 Pro, you have to set the following next:
 
 ```
 $ newt target set arduino_boot features=arduino_zero_pro 
@@ -153,7 +161,9 @@ board.
 
 To create and download your application, you create another target, this one pointing to the application you want to download to the Arduino board.  In this tutorial,  we will use the default application that comes with your project, ```apps/blinky```:
 
-```no-highlight
+**Note**: Remember to set features to `arduino_zero` if your board is Arduino Zero and not a Pro!
+
+```hl_lines="9"
 $ newt target create arduino_blinky 
 Target targets/arduino_blinky successfully created
 $ newt target set arduino_blinky app=apps/blinky 
@@ -185,9 +195,7 @@ Archiving testutil.a
 <snip>
 App successfully built: myproject/bin/arduino_blinky/apps/blinky/blinky.elf
 ```
-
-Congratulations!  You have successfully built your application. Now it's 
-time to load both the bootloader and application onto the target.
+<font color="#FF0000"> Congratulations! </font> You have successfully built your application. Now it's time to load both the bootloader and application onto the target.
 
 <br>
 
@@ -218,6 +226,10 @@ Execute the command to download the bootloader.
 
 If the newt tool finishes without error, that means the bootloader has been 
 successfully loaded onto the target.
+
+<br>
+
+<font color="#FF0000"> Reminder if you are using Docker: </font> When working with actual hardware, remember that each board has an ID. If you swap boards and do not refresh the USB Device Filter on the VirtualBox UI, the ID might be stale and the Docker instance may not be able to see the board correctly. For example, you may see an error message like `Error: unable to find CMSIS-DAP device` when you try to load or run an image on the board. In that case, you need to click on the USB link in VirtualBox UI, remove the existing USB Device Filter (e.g. "Atmel Corp. EDBG CMSIS-DAP[0101]") by clicking on the "Removes selected USB filter" button, and add a new filter by clicking on the "Adds new USB filter" button.
 
 <br>
 
@@ -293,3 +305,9 @@ debugger and restart the board.  The image you programmed will come and run on t
 
 Congratulations! You have created a Mynewt operating system running on the 
 Arduino Zero. The LED right next to the power LED should be blinking. It is toggled by one task running on the Mynewt OS.   
+
+We have more fun tutorials for you to get your hands dirty. Be bold and try other Blinky-like [tutorials](../tutorials/nRF52.md) or try enabling additional functionality such as [remote comms](project-target-slinky.md) on the current board.
+
+If you see anything missing or want to send us feedback, please do so by signing up for appropriate mailing lists on our [Community Page](../../community.md).
+
+Keep on hacking and blinking!
